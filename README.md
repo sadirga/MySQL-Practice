@@ -34,8 +34,8 @@ MySQL secara default menyertakan database ```sakila``` yang dapat digunakan oleh
     ```
     ```bash
     SELECT title,name as 'Category',length FROM Film,Category,film_category
-    WHERE Film.film_id = film_category.film_id and category.category_id = film_category.category_id and name='Comedy' ORDER BY length LIMIT 10;```
-[![NO1.png](https://i.postimg.cc/Gh5n6crb/NO1.png)](https://postimg.cc/MvVLQJvL)    
+    WHERE Film.film_id = film_category.film_id and category.category_id = film_category.category_id and name='Comedy' ORDER BY length LIMIT 10;  
+    [![NO1.png](https://i.postimg.cc/Gh5n6crb/NO1.png)](https://postimg.cc/MvVLQJvL)'''
     
     
 2. Tampilkan daftar lengkap __kategori film beserta jumlah film tiap kategori & rata-rata harga sewa DVD film tiap kategori__. Urutkan data dari kategori dengan jumlah film terbanyak. Kolom yang diwajibkan ada minimal adalah __kategori__, __jumlah film__ dan __rata-rata harga sewa__. Output yang diharapkan:
