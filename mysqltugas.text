@@ -1,0 +1,31 @@
+No 1. 
+SELECT title,name as 'Category',length FROM Film,Category,film_category 
+-> WHERE Film.film_id = film_category.film_id and category.category_id = film_category.category_id and name='Comedy' ORDER BY length LIMIT 10;
+
+No 2.
+SELECT name as 'kategori', count(title) as 'jumlahMovie',Avg(rental_rate) as 'rataHargaSewa' FROM film,film_category,category 
+-> WHERE Film.film_id = film_category.film_id and category.category_id = film_category.category_id GROUP BY name ORDER BY jumlahMovie DESC;
+
+No 3.
+SELECT rating, CASE WHEN rating = 'G' THEN 'General Audiences'
+-> WHEN rating = 'PG' THEN 'Parental Guidance Suggested'
+-> WHEN rating = 'PG-13' THEN 'Parental Guidances for Under 13'
+-> WHEN rating = 'R' THEN 'Restricted'
+-> WHEN rating = 'NC-17' THEN 'No Children Under 17 Admitted' END AS Keterangan, count(title) as 'jumlahMovie' from film GROUP BY rating ORDER BY rating;
+
+No 4.
+SELECT actor_id,first_name,last_name,(SELECT count(film_id) FROM film_actor fa WHERE fa.actor_id = a.actor_id) as jumlah_movie 
+-> FROM actor_info a ORDER BY jumlah_movie DESC LIMIT 10;
+
+No 5.
+SELECT Category, count(*) as 'jumlahMovie' FROM film_list WHERE actors LIKE '%GINA%' GROUP BY Category;
+
+No 6.
+SELECT title, category FROM film_list WHERE actors LIKE '%GINA%' AND category='Sci-Fi' GROUP BY Title;
+
+No 7.
+SELECT A.actor_id, A.first_name, A.last_name, count(title) as jumlah_movie FROM actor A, film_list fl, film_actor fa
+-> WHERE A.actor_id = fa.actor_id AND fl.FID = fa.film_id AND category='horror' GROUP BY fa.actor_id ORDER BY jumlah_movie DESC LIMIT 10;
+
+No 8.
+SELECT title, category from film_list WHERE actors LIKE '%Julia Mc%' AND category ='horror';
